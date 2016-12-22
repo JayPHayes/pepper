@@ -1,3 +1,14 @@
 <h1>
   {{title}}
 </h1>
+<hr>
+
+<button (click)="add()">Add New Item</button>
+
+<h3>Add list here</h3>
+<ul>
+  <li *ngFor="let c of cuisines | async">{{ c.$value }}</li>
+</ul>
+
+<h3>Restaurant</h3>
+name: {{ (restaurant | async)?.name}}

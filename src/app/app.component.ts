@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,29 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'Firebase app works!';
+  cuisines: FirebaseListObservable<any[]>;
+  restaurant;
+
+
+  constructor(private af: AngularFire){
+    
+  }
+
+
+  ngOnInit(){
+    this.cuisines = this.af.database.list('/cuisines');
+    this.restaurant = this.af.database.object('/restaurant')
+
+    console.log('this.restaurant', this.restaurant)
+   }
+
+  add(){
+    this.cuisines.push({
+      name:"Asin"
+      
+    })
+  }
+ 
+
 }
