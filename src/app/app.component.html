@@ -3,14 +3,13 @@
 </h1>
 <hr>
 
-<button (click)="add()">Add New Item</button>
-<button (click)="update()">Update Item</button>
-<button (click)="remove()">Remove Item</button>
-
 <h3>Add list here</h3>
 <ul>
-  <li *ngFor="let c of cuisines | async">{{ c.name }}</li>
+  <li *ngFor="let c of cuisines | async">{{ c.$key + '-' + c.$value }}</li>
 </ul>
 
+<hr>
 <h3>Restaurant</h3>
-name: {{ (restaurant | async)?.name}}
+<ul >
+  <li *ngFor="let r of restaurants | async">{{ r.name }} - {{ (r.cuisinesType | async)?.$value  }}</li>
+</ul>
