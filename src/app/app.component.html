@@ -4,10 +4,12 @@
 <hr>
 
 <button (click)="add()">Add New Item</button>
+<button (click)="update()">Update Item</button>
+<button (click)="remove()">Remove Item</button>
 
 <h3>Add list here</h3>
 <ul>
-  <li *ngFor="let c of cuisines | async">{{ c.$value }}</li>
+  <li *ngFor="let c of cuisines | async">{{ c.name }}</li>
 </ul>
 
 <h3>Restaurant</h3>
