@@ -9,7 +9,17 @@
 </ul>
 
 <hr>
+<div *ngIf="(exists | async)?.$value">EXISTS</div>
 <h3>Restaurant</h3>
 <ul >
-  <li *ngFor="let r of restaurants | async">{{ r.name }} - {{ (r.cuisinesType | async)?.$value  }}</li>
+  <li *ngFor="let r of restaurants | async">
+    Name: {{ r.name }} 
+    <ul>
+      <li *ngFor="let f of r.featureTypes">
+        {{ (f | async)?.$value }}
+      </li>
+    </ul>
+
+
+  </li>
 </ul>
